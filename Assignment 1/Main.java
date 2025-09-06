@@ -18,8 +18,10 @@ class Account {
     double balance;
     String email;
     String phoneNumber;
-    
+
+    // deposit money into account
     void deposit(double amount) {
+        // check if amount is positive
         if (amount > 0) {
             balance += amount;
         }
@@ -29,11 +31,13 @@ class Account {
     }
 
     void withdraw(double amount) {
+        // check if withdrawn amount causes balance to fall below zero
         if (balance - amount < 0) {
             System.out.println("Insufficient Balance");
             return;
         }
-        
+
+        // check if amount is positive
         if (amount > 0) {
             balance -= amount;
         }
@@ -57,6 +61,7 @@ class Account {
 }
 
 class UserInterface {
+    // resizable array (ArrayList) to store accounts
     ArrayList<Account> accounts = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
@@ -79,6 +84,7 @@ class UserInterface {
     void performDeposit() {
         System.out.print("Enter Account Number: ");
         int accNum = scanner.nextInt();
+        // find acount with the matching Account Number
         for (Account acc:accounts) {
             if (acc.accountNumber == accNum) {
                 System.out.print("Enter Amount: ");
@@ -92,6 +98,7 @@ class UserInterface {
     void performWithdrawl() {
         System.out.print("Enter Account Number: ");
         int accNum = scanner.nextInt();
+        // find acount with the matching Account Number
         for (Account acc:accounts) {
             if (acc.accountNumber == accNum) {
                 System.out.print("Enter Amount: ");
@@ -105,6 +112,7 @@ class UserInterface {
     void showAccountDetails() {
         System.out.print("Enter Account Number: ");
         int accNum = scanner.nextInt();
+        // find acount with the matching Account Number
         for (Account acc:accounts) {
             if (acc.accountNumber == accNum) {
                 acc.displayAccountDetails();
@@ -118,6 +126,7 @@ class UserInterface {
         System.out.print("Enter Account Number: ");
         int accNum = scanner.nextInt();
         scanner.nextLine();
+        // find acount with the matching Account Number
         for (Account acc:accounts) {
             if (acc.accountNumber == accNum) {
                 System.out.print("Enter new phone number: ");
@@ -166,3 +175,4 @@ class UserInterface {
         
     }
 }
+
